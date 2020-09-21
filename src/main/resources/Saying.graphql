@@ -1,0 +1,16 @@
+schema {
+    query: Query
+}
+
+type Query {
+    saying(name: String): Saying
+}
+
+type Mutation {
+    saying(name: String): Saying
+}
+
+type Saying {
+    id: Long!
+    content: String!
+}

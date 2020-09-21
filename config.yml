@@ -1,0 +1,34 @@
+template: Hello, %s!
+defaultName: Stranger
+graphql:
+  enableTracing: false
+  queryCache: maximumSize=10000
+  schemaFiles:
+    - Saying.graphql
+
+# HTTP-specific options.
+server:
+  type: simple
+  rootPath: /api/
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8080
+
+  requestLog:
+    appenders:
+      - type: console
+        timeZone: UTC
+        target: stdout
+
+logging:
+  level: INFO
+  loggers:
+    com.smoketurner.dropwizard.graphql: DEBUG
+    com.example.helloworld: DEBUG
+    graphql: INFO
+  appenders:
+    - type: console
+      timeZone: UTC
+      target: stdout
